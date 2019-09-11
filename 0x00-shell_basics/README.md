@@ -1,4 +1,4 @@
-# Welcome to StackEdit!
+# 0x00. Shell, basics
 ## Docs: 
 
  -  **0-current_working_directory** : prints the absolute path name of the current working directory.
