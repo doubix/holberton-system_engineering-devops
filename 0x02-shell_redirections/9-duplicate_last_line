@@ -1,2 +1,2 @@
 #!/bin/bash
-echo tail -1 icata >> icata
+tail -1 icata >> icata
