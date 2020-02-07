@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# 0 - 8 displays Holberton School 9 displays Hi 10 displays Holberton School
+
+COUNT=0
+while [ "$COUNT" -lt 10 ]; do
+	echo "Holberton School"
+	if [ "$COUNT" -eq 8 ]
+	then
+	    echo "Hi"
+	fi
+	let COUNT=COUNT+1
+done
