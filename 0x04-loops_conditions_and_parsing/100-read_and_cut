@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#  displays the content of the file /etc/passwd
+# displays: username group id path
+
+while _= read -r L; do
+    echo "$L" | cut -d':' -f1,4,7
+done < /etc/passwd

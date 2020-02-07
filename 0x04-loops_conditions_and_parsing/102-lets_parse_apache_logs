@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# display the IP and HTTP code in lapache log access file
+
+awk '{ print $1,$9 }' apache-access.log
