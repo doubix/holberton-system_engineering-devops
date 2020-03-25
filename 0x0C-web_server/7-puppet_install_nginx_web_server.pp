@@ -18,18 +18,15 @@ exec {'install':
 
 exec {'html':
   provider => shell,
-  path     => '/usr/bin:/usr/sbin:/bin',
   command  => 'sudo echo "Holberton School" | sudo tee /var/www/html/index.nginx-debian.html',
 }
 
 exec {'sedConfig':
   provider => shell,
   command  => 'sudo sed -i "/server_name _;/ a\\\trewrite ^/redirect_me http://www.youtube.com permanent;" /etc/nginx/sites-available/default',
-  path     => '/usr/bin:/usr/sbin:/bin',
 }
 
 exec {'start':
   provider => shell,
   command  => 'sudo service nginx start',
-  path     => '/usr/bin:/usr/sbin:/bin',
 }
