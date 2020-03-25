@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# fix the issue: Restat apache2 in docker container
+sudo service apache2 start
