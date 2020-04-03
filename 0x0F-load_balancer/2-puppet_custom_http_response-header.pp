@@ -22,13 +22,15 @@ exec {'install':
   provider => shell,
   } 
 
-exec {'sed':
-  command  => 'sudo sed -i "11i\\\tadd_header X-Served-By ${hostname};" /etc/nginx/nginx.conf',
-  path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-  provider => shell,
-  }
+-> file_line { 'change header':
+  ensure => present,
+  path   => '/etc/nginx/sites-available/default',
+  line   => "	location / {
+  add_header X-Served-By ${hostname};",
+  match  => '^\tlocation / {',
+}
 exec {'restart':
   command  => 'sudo service nginx restart',
-path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+  path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
   provider => shell,
   }
