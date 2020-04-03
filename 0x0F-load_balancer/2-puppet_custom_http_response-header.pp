@@ -20,7 +20,7 @@ exec {'Install nginx':
   } 
 
 exec {'sed':
-  command  => 'sudo sed -i "15i add_header X-Served-By \$hostname;" /etc/nginx/nginx.conf',
+  command  => 'sudo sed -i "11i\\\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf',
   provider => shell,
   }
 exec {'restart':
