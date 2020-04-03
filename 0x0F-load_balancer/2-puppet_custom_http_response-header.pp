@@ -10,20 +10,20 @@ exec {'update':
   command  => 'sudo apt-get -y update',
   provider => shell,
   }
-exec {'Install nginx':
+exec {'Upgrade':
   command  => 'sudo apt-get -y upgrade',
   provider => shell,
   } 
-exec {'Install nginx':
+exec {'Install':
   command  => 'sudo apt-get -y install nginx',
   provider => shell,
   } 
 
-exec {'sed':
-  command  => 'sudo sed -i "11i\\\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf',
+exec {'Sed':
+  command  => 'sudo sed -i "11i\\\tadd_header X-Served-By ${hostname};" /etc/nginx/nginx.conf',
   provider => shell,
   }
-exec {'restart':
+exec {'Restart':
   command  => 'sudo service nginx restart',
   provider => shell,
   } 
