@@ -8,22 +8,27 @@
 
 exec {'update':
   command  => 'sudo apt-get -y update',
+  path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
   provider => shell,
   }
-exec {'Upgrade':
+exec {'upgrade':
   command  => 'sudo apt-get -y upgrade',
+  path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
   provider => shell,
   } 
-exec {'Install':
+exec {'install':
   command  => 'sudo apt-get -y install nginx',
+  path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
   provider => shell,
   } 
 
-exec {'Sed':
+exec {'sed':
   command  => 'sudo sed -i "11i\\\tadd_header X-Served-By ${hostname};" /etc/nginx/nginx.conf',
+  path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
   provider => shell,
   }
-exec {'Restart':
+exec {'restart':
   command  => 'sudo service nginx restart',
+path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
   provider => shell,
-  } 
+  }
