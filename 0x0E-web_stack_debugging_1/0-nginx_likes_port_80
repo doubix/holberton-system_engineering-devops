@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-# link sites-enabled to sites-available 
-# start nginx srevice
-
+# link sites-enabled to sites-available and start nginx srevice
 sudo rm /etc/nginx/sites-enabled/default
 ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 sudo service nginx start
