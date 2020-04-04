@@ -21,11 +21,6 @@ provider => 'shell',
 }
 
 exec { 'modify_nginx_config':                                                                                                                                                   
-command => 'sed -i  "11i\\\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf',                                                                                          
+command => 'sed -i  "11i\\\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf && sudo service nginx restart',                                                                                          
 provider => 'shell',                                                                                                                                                            
-}     
-exec { 'restart_nginx':
-command => 'sudo service nginx restart',
-provider => 'shell',
 }
-
