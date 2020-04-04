@@ -20,11 +20,10 @@ command => 'sudo service nginx start',
 provider => 'shell',
 }
 
-exec { 'modify_nginx_config':
-command => 'sed -i -e "/sendfile/i \\\tadd_header X-Served-By \$hostname;" /etc/nginx/nginx.conf',
-provider => 'shell',
-}
-
+exec { 'modify_nginx_config':                                                                                                                                                   
+command => 'sed -i  "11i\\\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf',                                                                                          
+provider => 'shell',                                                                                                                                                            
+}     
 exec { 'restart_nginx':
 command => 'sudo service nginx restart',
 provider => 'shell',
