@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 """Function to count words in all hot posts of a given Reddit subreddit."""
 import requests
@@ -6,7 +5,7 @@ import requests
 
 def count_words(subreddit, word_list, after="", doc={}, count=0):
     """Prints counts of given words found in hot posts of a given subreddit.
-    
+
     Arguments:
         subreddit (str)
         word_list (list)
@@ -28,7 +27,6 @@ def count_words(subreddit, word_list, after="", doc={}, count=0):
     if (res.status_code != 200 or "error" in res.json().keys()):
         print("")
         return None
-
 
     data = res.json()
     d = data["data"]
