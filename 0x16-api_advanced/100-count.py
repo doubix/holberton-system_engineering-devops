@@ -27,27 +27,3 @@ def count_words(subreddit, word_list, after="", doc={}, count=0):
     if (res.status_code != 200 or "error" in res.json().keys()):
         print("")
         return None
-
-    data = res.json()
-    d = data["data"]
-    after = d["after"]
-    count += d.get["dist"]
-    for p in d.get["children"]:
-        title = p.get("data").get("title")
-        for word in word_list:
-            if word.lower() in title.lower().split():
-                times = len([t for t in title if t == word.lower()])
-                if doc.get(word) is None:
-                    doc[word] = times
-                else:
-                    doc[word] += times
-
-    if after is None:
-        if len(doc) == 0:
-            print("")
-            return None
-        doc = sorted(doc.items(), key=lambda kv: (-kv[1], kv[0]))
-        for k, v in doc:
-            print("{}: {}", format(k, v))
-    else:
-        count_words(subreddit, word_list, after, doc, count)
